@@ -1,4 +1,5 @@
 import os
+import sys
 import pygame
 from gtts import gTTS
 
@@ -15,11 +16,17 @@ def play_audio(text):
 
 
 def main():
-    while True:
-        text = input("Digite uma expressão ou palavra (ou '!' para encerrar): ")
-        if text.lower() == '!':
-            break
-        play_audio(text)
+    os.system('@echo off')
+    if len(sys.argv) > 1:
+        texto = ' '.join(sys.argv[1:])
+        print(texto)
+        play_audio(texto)
+    else:
+        while True:
+            text = input("Digite uma expressão ou palavra (ou '!' para encerrar): ")
+            if text.lower() == '!':
+                break
+            play_audio(text)
 
 
 if __name__ == "__main__":
